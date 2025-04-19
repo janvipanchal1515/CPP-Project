@@ -72,7 +72,7 @@ class Tickets:public BookingSystem{
     void displayChart() {
         cout << "Seating Chart:\n";
         for (int i = 0; i < 8; i++) {
-            cout << "Row " << i << ":";
+            cout << "Row " << i+1 << ":";
             for (int j = 1; j < 11; j++) {
                 cout << " " << seats[i][j];
             }
