@@ -63,17 +63,17 @@ class Tickets:public BookingSystem{
 
     public:
     Tickets() {
-        for (int i = 0; i <=8; i++) {
-            for (int j = 0; j <= 10; j++) {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 10; j++) {
                 seats[i][j] = '0';
             }
         }
     }
     void displayChart() {
         cout << "Seating Chart:\n";
-        for (int i = 1; i <= 8; i++) {
+        for (int i = 0; i <  8; i++) {
             cout << "Row " << i << ":";
-            for (int j = 1; j <= 10; j++) {
+            for (int j = 0; j <  10; j++) {
                 cout << " " << seats[i][j];
             }
             cout << endl ;
@@ -180,7 +180,7 @@ int main(){
 
     do{
     cout<<"---------------------------------------"<<endl;
-    cout<<"| Movie Ticket Booking System |"<<endl;
+    cout <<"    |Movie Ticket Booking System |"<<endl;
     cout<<"---------------------------------------"<<endl;
     cout<<" 1. View Movies. "<<endl;
     cout<<" 2. View Date and Timings. "<<endl;
@@ -208,7 +208,7 @@ int main(){
         break;
 
         case 4:
-            cout<<"THANK YOU"<<endl;
+            cout<<"THANK YOU."<<endl<<"Your Ticket Booked Successfully;
         break;
 
         default:
