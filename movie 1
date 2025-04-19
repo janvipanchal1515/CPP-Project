@@ -174,7 +174,6 @@ class Tickets:public BookingSystem{
 int main(){
 
     int choice,seats;
-    BookingSystem booking;
     Tickets ticket;
 
 
@@ -191,11 +190,11 @@ int main(){
 
     switch(choice){
         case 1:
-            booking.showMovies();
+            ticket.showMovies();
         break;
 
         case 2:
-            booking.showDateandTimings();
+            ticket.showDateandTimings();
         break;
 
         case 3:
