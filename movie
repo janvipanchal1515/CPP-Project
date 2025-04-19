@@ -1,0 +1,149 @@
+
+#include <iostream>
+#include<vector>
+#include<string>
+#include<fstream>
+using namespace std;
+
+class BookingSystem{
+
+    vector<string> movies={
+        "Kesari 2",
+        "Chhaava",
+        "Baby John",
+        "Jigra",
+        "Do Patti",
+    };
+    
+    public:
+    void showMovies(){
+       cout << "Available Movies:"<<endl;
+       for (int i = 0; i < movies.size(); i++) {
+       cout << i + 1 << ". " << movies[i] << endl;
+    }
+
+    }
+
+    void showDateandTimings(){
+        int choice;
+        showMovies();
+        cout << "Enter the number of the movie you want to watch: ";
+        cin >> choice;
+
+        if (choice < 1 || choice > movies.size()) {
+            cout << "Invalid selection."<<endl;
+            return;
+        }
+
+        string selectedMovie = movies[choice - 1];
+        cout << "Selected Movie: " << selectedMovie << "\n";
+
+        string filename = selectedMovie + ".txt";
+
+        ifstream file(filename);
+
+        if (!file) {
+            cout << "Details for this movie are not available.\n";
+            return;
+        }
+        string line;
+        cout << "Dates and Timings: "<<endl;
+        while (getline(file, line)) {
+            cout << line << endl;
+        }
+
+        file.close();
+
+       
+    }
+};
+class Tickets:public BookingSystem{
+    private:
+    char seats[6][11];
+
+    public:
+    Tickets() {
+        for (int i = 1; i <= 5; i++) {
+            for (int j = 1; j <= 10; j++) {
+                seats[i][j] = '0';
+            }
+        }
+    }
+    void displayChart() {
+        cout << "Seating Chart:\n";
+        for (int i = 1; i <= 5; i++) {
+            cout << "Row " << i << ":";
+            for (int j = 1; j <= 10; j++) {
+                cout << " " << seats[i][j];
+            }
+            cout << "\n";
+        }
+    }
+    
+    void reserveSeats(int count) {
+        int row, seat;
+        for (int i = 1; i <= count; i++) {
+            cout << "Enter row and seat number for reserved seat " << i << " (e.g., 2 5): ";
+            cin >> row >> seat;
+
+            if (row >= 1 && row <= 5 && seat >= 1 && seat <= 10) {
+                if (seats[row][seat] == '0') {
+                    seats[row][seat] = 'X';
+                } else {
+                    cout << "Seat already reserved! Choose another.\n";
+                    i--;
+                }
+            } else {
+                cout << "Invalid seat location! Try again.\n";
+                i--;
+            }
+        }
+    }
+    
+
+};
+
+    
+
+int main(){
+
+    int choice,seats;
+    BookingSystem booking;
+    Tickets ticket;
+
+
+    do{
+    cout<<"---------------------------------------"<<endl;
+    cout<<" Movie Ticket Booking System "<<endl;
+    cout<<"---------------------------------------"<<endl;
+    cout<<" 1. View Movies. "<<endl;
+    cout<<" 2. View Date and Timings. "<<endl;
+    cout<<" 3. Book Tickets. "<<endl;
+    cout<<" 4. Exit. "<<endl;
+    cout<<"Enter your choice: ";
+    cin>>choice;
+
+    switch(choice){
+        case 1:
+        booking.showMovies();
+        break;
+
+        case 2:
+        booking.showDateandTimings();
+        break;
+        case 3:
+        ticket.displayChart();
+
+        cout << "How many seats do you book: ";
+        cin >> seats;
+        ticket.reserveSeats(seats);
+        ticket.displayChart();
+        break;
+        default:
+        cout<<"Invalid Choice."<<endl;
+
+    }
+   
+    }while(choice!=3);
+    return 0;
+}
