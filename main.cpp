@@ -68,7 +68,7 @@ int main(){
     cout<<" Movie Ticket Booking System "<<endl;
     cout<<"---------------------------------------"<<endl;
     cout<<" 1. View Movies. "<<endl;
-    cout<<" 2. View Data and Timings. "<<endl;
+    cout<<" 2. View Date and Timings. "<<endl;
     cout<<"Enter your choice: ";
     cin>>choice;
 
