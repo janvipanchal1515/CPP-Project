@@ -59,21 +59,21 @@ class BookingSystem{
 };
 class Tickets:public BookingSystem{
     private:
-    char seats[6][11];
+    char seats[8][11];
 
     public:
     Tickets() {
-        for (int i = 1; i <= 5; i++) {
-            for (int j = 1; j <= 10; j++) {
+        for (int i = 0; i <8; i++) {
+            for (int j = 0; j <11; j++) {
                 seats[i][j] = '0';
             }
         }
     }
     void displayChart() {
         cout << "Seating Chart:\n";
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 0; i < 8; i++) {
             cout << "Row " << i << ":";
-            for (int j = 1; j <= 10; j++) {
+            for (int j = 1; j < 11; j++) {
                 cout << " " << seats[i][j];
             }
             cout << "\n";
@@ -82,11 +82,11 @@ class Tickets:public BookingSystem{
     
     void reserveSeats(int count) {
         int row, seat;
-        for (int i = 1; i <= count; i++) {
+        for (int i = 0; i < count; i++) {
             cout << "Enter row and seat number for reserved seat " << i << " (e.g., 2 5): ";
             cin >> row >> seat;
 
-            if (row >= 1 && row <= 5 && seat >= 1 && seat <= 10) {
+            if (row >= 1 && row <= 8 && seat >= 1 && seat <= 10) {
                 if (seats[row][seat] == '0') {
                     seats[row][seat] = 'X';
                 } else {
