@@ -56,6 +56,14 @@ class BookingSystem{
        
     }
 };
+class Tickets:public BookingSystem{
+    public:
+    int seats;
+    Tickets(){
+    cout<<"How many seats do you book: ";
+    cin>>seats;
+    }
+};
     
 
 int main(){
